@@ -24,10 +24,4 @@ ANIMALS = [
 
 
 def get_all_animals():
-    """_summary_
-
-    Returns:
-        _type_: _description_
-    """
     return ANIMALS
-    

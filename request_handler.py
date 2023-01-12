@@ -30,6 +30,7 @@ class HandleRequests(BaseHTTPRequestHandler):
             response = get_all_animals()
         else:
             response = []
+
         # Send a JSON formatted string as a response
         self.wfile.write(json.dumps(response).encode())
 
@@ -43,7 +44,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
-        response = {"payload": post_body}
+        response = { "payload": post_body }
         self.wfile.write(json.dumps(response).encode())
 
     # A method that handles any PUT request.
@@ -70,10 +71,8 @@ class HandleRequests(BaseHTTPRequestHandler):
         """
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods',
-                         'GET, POST, PUT, DELETE')
-        self.send_header('Access-Control-Allow-Headers',
-                         'X-Requested-With, Content-Type, Accept')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+        self.send_header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept')
         self.end_headers()
 
 
@@ -89,16 +88,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-        # It's an if..else statement
-        # if self.path == "/animals":
-        #     # In Python, this is a list of dictionaries
-        #     # In JavaScript, you would call it an array of objects
-        #     response = [
-        #         {"id": 1, "name": "Snickers", "species": "Dog"},
-        #         {"id": 2, "name": "Lenny", "species": "Cat"}
-        #     ]
-
-        # else:
-        #     response = []
